@@ -1,7 +1,7 @@
 /* global maxPages */
 
 // Code snippet inspired by https://github.com/douglasrodrigues5/ghost-blog-infinite-scroll
-$(function ($) {
+$(function($) {
     var currentPage = 1;
     var pathname = window.location.pathname;
     var $document = $(document);
@@ -68,13 +68,13 @@ $(function ($) {
         }
 
         /**
-        * maxPages is defined in default.hbs and is the value
-        * of the amount of pagination pages.
-        * If we reached the last page or are past it,
-        * we return and disable the listeners.
-        */
+         * maxPages is defined in default.hbs and is the value
+         * of the amount of pagination pages.
+         * If we reached the last page or are past it,
+         * we return and disable the listeners.
+         */
         if (currentPage >= maxPages) {
-            window.removeEventListener('scroll', onScroll, {passive: true});
+            window.removeEventListener('scroll', onScroll, { passive: true });
             window.removeEventListener('resize', onResize);
             return;
         }
@@ -87,28 +87,28 @@ $(function ($) {
         // Load more
         var nextPage = pathname + 'page/' + currentPage + '/';
 
-        $.get(nextPage, function (content) {
+        $.get(nextPage, function(content) {
             var parse = document.createRange().createContextualFragment(content);
             var posts = parse.querySelectorAll('.post');
             if (posts.length) {
-                [].forEach.call(posts, function (post) {
+                [].forEach.call(posts, function(post) {
                     $result[0].appendChild(post);
                 });
             }
-        }).fail(function (xhr) {
+        }).fail(function(xhr) {
             // 404 indicates we've run out of pages
             if (xhr.status === 404) {
-                window.removeEventListener('scroll', onScroll, {passive: true});
+                window.removeEventListener('scroll', onScroll, { passive: true });
                 window.removeEventListener('resize', onResize);
             }
-        }).always(function () {
+        }).always(function() {
             lastDocumentHeight = $document.height();
             isLoading = false;
             ticking = false;
         });
     }
 
-    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
 
     infiniteScroll();
