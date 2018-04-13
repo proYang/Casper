@@ -15,6 +15,7 @@
     --pink: #fa3a57;
     --brown: #a3821a;
     --globalfont: '-apple-system', 'Open Sans', HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+    --codefont: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
 }
 
 /* Reset

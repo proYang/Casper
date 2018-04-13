@@ -1,0 +1,1 @@
+$(function(t){!function(){t('<a href="#" id="to-top" title="回到顶部"> <div class="to-top-wrap"></div></a>').appendTo("body");var o=t("#to-top");t(window).scroll(function(){t(window).scrollTop()>t(window).height()?o.fadeIn(500):o.fadeOut(500)}),o.click(function(o){o.preventDefault(),t("html,body").animate({scrollTop:0},600)})}()});
